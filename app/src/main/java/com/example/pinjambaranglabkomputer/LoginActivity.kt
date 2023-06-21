@@ -6,13 +6,13 @@ import android.os.Bundle
 import android.view.View
 import android.widget.EditText
 
-class MainActivity : AppCompatActivity() {
+class LoginActivity : AppCompatActivity() {
     lateinit var textId: EditText
     lateinit var textNIM: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_login)
 
         textId = findViewById(R.id.userId)
         textNIM = findViewById(R.id.userNIM)
