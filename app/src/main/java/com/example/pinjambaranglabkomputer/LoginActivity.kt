@@ -28,7 +28,7 @@ class LoginActivity : AppCompatActivity() {
             textId.error = "Nama Tidak Boleh Kosong"
             textId.requestFocus()
         } else if(textPassword.text.toString().isEmpty()) {
-            textPassword.error = "Nama Tidak Boleh Kosong"
+            textPassword.error = "Password Tidak Boleh Kosong"
             textPassword.requestFocus()
         } else {
             databaseReference = FirebaseDatabase.getInstance().getReference("ListUser")

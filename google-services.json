@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "286540194407",
+    "firebase_url": "https://pinjam-barang-lab-komputer-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "pinjam-barang-lab-komputer",
+    "storage_bucket": "pinjam-barang-lab-komputer.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:286540194407:android:cf149b48bf7189c142eac2",
+        "android_client_info": {
+          "package_name": "com.example.nav_drawer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "286540194407-b2emk8oktqiud4pk8oifc98shr4a5cbu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDu6su1auKHns17DHrbtgHcA1rsa4TJmcw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "286540194407-b2emk8oktqiud4pk8oifc98shr4a5cbu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:286540194407:android:0803547a584231e142eac2",
+        "android_client_info": {
+          "package_name": "com.example.pinjambaranglabkomputer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "286540194407-b2emk8oktqiud4pk8oifc98shr4a5cbu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDu6su1auKHns17DHrbtgHcA1rsa4TJmcw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "286540194407-b2emk8oktqiud4pk8oifc98shr4a5cbu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
