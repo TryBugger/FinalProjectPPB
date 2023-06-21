@@ -2,4 +2,15 @@
     <string name="app_name">Pinjam Barang Lab Komputer</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
+
+    <string name="nav_header_title">Peminjaman Alat Laboratorium Komputer</string>
+    <string name="nav_header_subtitle">Universitas Pertamina</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_form">Form Peminjaman Alat</string>
+    <string name="menu_stats">Status Peminjaman</string>
+    <string name="menu_riwayat">Riwayat Peminjaman</string>
+    <string name="list">List Alat Laboratorium</string>
 </resources>
