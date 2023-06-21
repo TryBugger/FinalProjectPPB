@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
 
     fun buttonLoginClick(view: View?){
         val intent = Intent(this, AdminActivity::class.java).apply {
-            putExtra("Name", textId.text)
+            putExtra("adminName", textId.text.toString())
         }
 
         println(textId.text)

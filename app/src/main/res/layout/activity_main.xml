@@ -21,45 +21,44 @@
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="128dp"
-        android:layout_height="128dp"
-        android:layout_marginTop="140dp"
+        android:layout_width="320dp"
+        android:layout_height="240dp"
+        android:layout_marginTop="80dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo" />
+        app:srcCompat="@drawable/logoup" />
 
     <EditText
         android:id="@+id/userId"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="240dp"
+        android:layout_height="40dp"
         android:layout_marginTop="80dp"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text=""
         android:hint="Masukkan Nama"
+        android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <EditText
         android:id="@+id/userNIM"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="240dp"
+        android:layout_height="40dp"
         android:layout_marginTop="8dp"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text=""
         android:hint="Masukkan NIM"
+        android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/userId" />
 
     <Button
         android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="240dp"
+        android:layout_height="40dp"
         android:layout_marginTop="32dp"
+        android:backgroundTint="@color/blue"
         android:onClick="buttonLoginClick"
         android:text="Login"
         app:layout_constraintEnd_toEndOf="parent"
