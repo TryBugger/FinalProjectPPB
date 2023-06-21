@@ -2,11 +2,9 @@ package com.example.pinjambaranglabkomputer
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.renderscript.Sampler.Value
-import android.widget.Toast
+import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.pinjambaranglabkomputer.databinding.ActivityLaporanBinding
 import com.google.firebase.database.*
 
 class LaporanActivity : AppCompatActivity() {
@@ -24,6 +22,7 @@ class LaporanActivity : AppCompatActivity() {
         peminjamanRecycleView.setHasFixedSize(true)
 
         peminjamanArrayList = arrayListOf<ListPeminjaman>()
+        peminjamanRecycleView.adapter = PeminjamanAdapter(peminjamanArrayList)
         readLaporan()
     }
 
@@ -34,15 +33,15 @@ class LaporanActivity : AppCompatActivity() {
                 if(snapshot.exists()){
                     for(peminjamanSnapshot in snapshot.children){
                         val peminjaman = peminjamanSnapshot.getValue(ListPeminjaman::class.java)
-                        peminjamanArrayList.add(peminjaman!!)
+                        peminjaman?.let {
+                            peminjamanArrayList.add(it)
+                        }
                     }
-                    println(peminjamanArrayList)
-                    peminjamanRecycleView.adapter = PeminjamanAdapter(peminjamanArrayList)
                 }
             }
 
             override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
+                Log.e("LaporanActivity", "Error: ${error.message}")
             }
 
         })

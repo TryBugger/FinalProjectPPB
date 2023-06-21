@@ -16,8 +16,11 @@
             android:exported="false" />
         <activity
             android:name=".AdminActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".MainActivity"
             android:exported="false"
-            android:parentActivityName=".LoginActivity" />
+            android:theme="@style/Theme.PinjamBarangLabKomputer.NoActionBar"/>
         <activity
             android:name=".LoginActivity"
             android:exported="true">
