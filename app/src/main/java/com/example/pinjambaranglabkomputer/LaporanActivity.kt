@@ -11,16 +11,13 @@ import com.google.firebase.database.*
 
 class LaporanActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityLaporanBinding
     private lateinit var databaseReference: DatabaseReference
     private lateinit var peminjamanRecycleView: RecyclerView
     private lateinit var peminjamanArrayList: ArrayList<ListPeminjaman>
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityLaporanBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(R.layout.activity_laporan)
 
         peminjamanRecycleView = findViewById(R.id.laporanRecycle)
         peminjamanRecycleView.layoutManager = LinearLayoutManager(this)
