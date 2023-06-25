@@ -44,7 +44,7 @@
                 android:layout_width="0dp"
                 android:layout_column="0"
                 android:layout_margin="1dp"
-                android:layout_weight="2"
+                android:layout_weight="1"
                 android:text="Alat"
                 android:textColor="@color/white"
                 android:textStyle="bold"

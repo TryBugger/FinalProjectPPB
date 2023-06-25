@@ -14,6 +14,7 @@ class AdminActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_admin)
+        supportActionBar?.hide()
 
         val name = intent.getStringExtra("adminName").toString()
 

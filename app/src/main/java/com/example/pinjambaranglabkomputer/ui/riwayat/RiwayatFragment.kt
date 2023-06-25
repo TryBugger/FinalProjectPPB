@@ -1,4 +1,4 @@
-package com.example.nav_drawer.ui.riwayat
+package com.example.pinjambaranglabkomputer.ui.riwayat
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.example.nav_drawer.ui.riwayat.RiwayatViewModel
 import com.example.pinjambaranglabkomputer.databinding.FragmentRiwayatBinding
 
 class RiwayatFragment : Fragment() {

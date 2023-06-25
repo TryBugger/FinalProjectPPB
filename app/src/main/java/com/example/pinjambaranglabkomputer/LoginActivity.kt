@@ -18,6 +18,7 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+        supportActionBar?.hide()
 
         textId = findViewById(R.id.userId)
         textPassword = findViewById(R.id.userPassword)
@@ -31,26 +32,23 @@ class LoginActivity : AppCompatActivity() {
             textPassword.error = "Password Tidak Boleh Kosong"
             textPassword.requestFocus()
         } else {
-            databaseReference = FirebaseDatabase.getInstance().getReference("ListUser")
-            val query: Query = databaseReference.equalTo(textId.text.toString())
-            println("BERHASIL2")
-            println(query)
+            databaseReference = FirebaseDatabase.getInstance("https://pinjam-barang-lab-komputer-default-rtdb.asia-southeast1.firebasedatabase.app").getReference("ListUser")
+            val query: Query = databaseReference.orderByChild("username").equalTo(textId.text.toString())
             query.addListenerForSingleValueEvent(object: ValueEventListener{
                 override fun onDataChange(snapshot: DataSnapshot) {
-                    println("BERHASIL1")
                     if(snapshot.exists()){
                         for(item in snapshot.children){
                             val user = item.getValue<Users>()
                             if(user != null){
                                 if(user.password.equals((textPassword.text.toString()))){
-                                    if(user.userAccessslevel.equals("1")){
+                                    if(user.userAccesslevel.equals("1")){
                                         val intent = Intent(this@LoginActivity, AdminActivity::class.java).apply {
                                             putExtra("adminName", textId.text.toString())
                                         }
                                         if (intent.resolveActivity(packageManager) != null) {
                                             startActivity(intent)
                                         }
-                                    } else if(user.userAccessslevel.equals("2")){
+                                    } else if(user.userAccesslevel.equals("2")){
                                         val intent = Intent(this@LoginActivity, MainActivity::class.java).apply {
                                             putExtra("adminName", textId.text.toString())
                                         }

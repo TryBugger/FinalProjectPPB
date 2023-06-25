@@ -17,7 +17,7 @@ class PeminjamanAdapter(private val peminjamanList: ArrayList<ListPeminjaman>): 
 
         holder.nama.text = currentitem.nama
         holder.alat.text = currentitem.alat
-        holder.jumlah.text = currentitem.jumlah
+        holder.jumlah.text = currentitem.jumlah.toString()
         holder.tanggal_pinjam.text = currentitem.tanggal_pinjam
         holder.tanggal_kembali.text = currentitem.tanggal_kembali
         holder.status_peminjaman.text = currentitem.status_peminjaman
@@ -35,4 +35,13 @@ class PeminjamanAdapter(private val peminjamanList: ArrayList<ListPeminjaman>): 
         var tanggal_kembali: TextView = itemView.findViewById(R.id.tglKembaliListPinjamId)
         var status_peminjaman: TextView = itemView.findViewById(R.id.statusListPinjamId)
     }
+
+//    private lateinit var onItemClickCallback: OnItemClickCallBack
+//    interface OnItemClickCallBack {
+//        fun onItemClicked(data: your_data_class_here)
+//    }
+//
+//    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallBack) {
+//        this.onItemClickCallback = onItemClickCallback
+//    }
 }

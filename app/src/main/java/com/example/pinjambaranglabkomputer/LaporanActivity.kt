@@ -16,6 +16,7 @@ class LaporanActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_laporan)
+        supportActionBar?.hide()
 
         peminjamanRecycleView = findViewById(R.id.laporanRecycle)
         peminjamanRecycleView.layoutManager = LinearLayoutManager(this)
@@ -27,9 +28,10 @@ class LaporanActivity : AppCompatActivity() {
     }
 
     private fun readLaporan(){
-        databaseReference = FirebaseDatabase.getInstance().getReference("ListPeminjaman")
-        databaseReference.addValueEventListener(object: ValueEventListener{
+        databaseReference = FirebaseDatabase.getInstance("https://pinjam-barang-lab-komputer-default-rtdb.asia-southeast1.firebasedatabase.app").getReference("ListPeminjaman")
+        databaseReference.addValueEventListener(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
+                peminjamanArrayList.clear()
                 if(snapshot.exists()){
                     for(peminjamanSnapshot in snapshot.children){
                         val peminjaman = peminjamanSnapshot.getValue(ListPeminjaman::class.java)
@@ -37,6 +39,7 @@ class LaporanActivity : AppCompatActivity() {
                             peminjamanArrayList.add(it)
                         }
                     }
+                    peminjamanRecycleView.adapter?.notifyDataSetChanged()
                 }
             }
 

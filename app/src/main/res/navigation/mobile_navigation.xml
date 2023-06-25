@@ -7,25 +7,25 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.example.nav_drawer.ui.home.HomeFragment"
+        android:name="com.example.pinjambaranglabkomputer.ui.home.HomeFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/nav_form"
-        android:name="com.example.nav_drawer.ui.form.FormFragment"
+        android:name="com.example.pinjambaranglabkomputer.ui.form.FormFragment"
         android:label="@string/menu_form"
         tools:layout="@layout/fragment_form" />
 
     <fragment
         android:id="@+id/nav_stats"
-        android:name="com.example.nav_drawer.ui.status.StatusFragment"
+        android:name="com.example.pinjambaranglabkomputer.ui.status.StatusFragment"
         android:label="@string/menu_stats"
         tools:layout="@layout/fragment_stats" />
 
     <fragment
         android:id="@+id/nav_riwayat"
-        android:name="com.example.nav_drawer.ui.riwayat.RiwayatFragment"
+        android:name="com.example.pinjambaranglabkomputer.ui.riwayat.RiwayatFragment"
         android:label="@string/menu_riwayat"
         tools:layout="@layout/fragment_riwayat" />
 </navigation>
