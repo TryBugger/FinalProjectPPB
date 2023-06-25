@@ -32,6 +32,7 @@ class FormFragment : Fragment() {
 
         val nextBtn : Button = binding.kirim
         nextBtn.setOnClickListener{
+            TODO("Persiapan Inject Data ke Firebase")
 /*            val fragment = StatusFragment()
             parentFragmentManager.beginTransaction()
                 .replace(R.id.fragment_container, fragment)
