@@ -29,12 +29,8 @@
         android:background="@drawable/searcview_background"
         android:queryBackground="@android:color/transparent"/>
 
-    <ListView
-        android:id="@+id/userList"
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"/>
-
-
+        android:id="@+id/barangRecycle_view"/>
 </LinearLayout>
