@@ -56,26 +56,17 @@ class FormFragment : Fragment() {
     }
 
     fun uploadData() {
-        val uploadNama: String = binding.textNameField.text.toString()
-        val uploadNim: String = binding.textNIMField.text.toString()
-        val uploadAlat: String = "Arduino"//binding.spinnerAlat.selectedItem.toString()
-        val uploadJumlah: Long = 1
-        val uploadTanggalPinjam: String = binding.textTglPeminjamanField.text.toString()
-        val uploadTanggalKembali: String = binding.textTglPengembalianField.text.toString()
-        val uploadAlasan: String = binding.textAlasanField.text.toString()
-        val uploadStatusPinjam: String = "process"
-
         val database = FirebaseDatabase.getInstance("https://pinjam-barang-lab-komputer-default-rtdb.asia-southeast1.firebasedatabase.app")
             .getReference("ListPeminjaman")
         val dataUpload = Peminjaman(
-            uploadNama,
-            uploadNim,
-            uploadAlat,
-            uploadJumlah,
-            uploadTanggalPinjam,
-            uploadTanggalKembali,
-            uploadAlasan,
-            uploadStatusPinjam
+            binding.textNameField.text.toString(),
+            binding.textNIMField.text.toString(),
+            "Arduino",//binding.spinnerAlat.selectedItem.toString(),
+            1,
+            binding.textTglPeminjamanField.text.toString(),
+            binding.textTglPengembalianField.text.toString(),
+            binding.textAlasanField.text.toString(),
+            "process"
         )
         var totalPinjaman: Long = 0
 //        database.addValueEventListener(object: ValueEventListener {
@@ -88,9 +79,9 @@ class FormFragment : Fragment() {
 //        })
         val valueEventListener = object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                totalPinjaman = snapshot.childrenCount + 1
+                totalPinjaman = snapshot.childrenCount
                 // Use the updated value here
-                println(totalPinjaman)
+                println("Didalam Fungsi" + totalPinjaman.toString())
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -98,17 +89,18 @@ class FormFragment : Fragment() {
             }
         }
         database.addValueEventListener(valueEventListener)
+        println("Diluar Fungsi" + totalPinjaman.toString())
 
-        database.child(totalPinjaman.toString()).setValue(dataUpload).addOnSuccessListener {
-            binding.textNameField.text!!.clear()
-            binding.textNIMField.text!!.clear()
-//            binding.spinnerAlat.adapter(null)
-            binding.textTglPeminjamanField.text!!.clear()
-            binding.textTglPengembalianField.text!!.clear()
-            binding.textAlasanField.text!!.clear()
+            database.child(totalPinjaman.toString()).setValue(dataUpload).addOnSuccessListener {
+                binding.textNameField.text!!.clear()
+                binding.textNIMField.text!!.clear()
+    //            binding.spinnerAlat.adapter(null)
+                binding.textTglPeminjamanField.text!!.clear()
+                binding.textTglPengembalianField.text!!.clear()
+                binding.textAlasanField.text!!.clear()
 
-//            Toast.makeText(this@FormFragment, "Upload Data Peminjaman Sukses", Toast.LENGTH_SHORT).show()
-        }.addOnFailureListener {
+    //            Toast.makeText(this@FormFragment, "Upload Data Peminjaman Sukses", Toast.LENGTH_SHORT).show()
+            }.addOnFailureListener {
 //            Toast.makeText(this@FormFragment, "Gagal Upload Data Peminjaman", Toast.LENGTH_SHORT).show()
         }
     }
