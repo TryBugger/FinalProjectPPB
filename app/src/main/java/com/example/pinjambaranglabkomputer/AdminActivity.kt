@@ -16,7 +16,7 @@ class AdminActivity : AppCompatActivity() {
         setContentView(R.layout.activity_admin)
         supportActionBar?.hide()
 
-        val name = intent.getStringExtra("adminName").toString()
+        val name = "Halo, "+intent.getStringExtra("adminName").toString()
 
         userText = findViewById(R.id.adminId)
         userText.setText(name)

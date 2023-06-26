@@ -56,9 +56,9 @@ class LoginActivity : AppCompatActivity() {
                                             startActivity(intent)
                                         }
                                     }
+                                } else {
+                                    Toast.makeText(this@LoginActivity, "Password Anda Salah", Toast.LENGTH_LONG).show()
                                 }
-                            } else {
-                                TODO("Buat Kondisi Jikia Password Salah")
                             }
                         }
                     } else {
