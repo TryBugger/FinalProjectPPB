@@ -26,8 +26,6 @@ class FormFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
 
-    private val spinner = binding.spinnerAlat
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -45,9 +43,9 @@ class FormFragment : Fragment() {
         }*/
 
         // Spinner
-        val spinnerValues = arrayOf("Arduino", "Kabel LAN", "Laptop")
+//        val spinnerValues = arrayOf("Arduino", "Kabel LAN", "Laptop")
 //        val spinnerAdapter = ArrayAdapter(this@FormFragment, R.layout.simple_spinner_dropdown_item, spinnerValues)
-//        spinner.adapter = spinnerAdapter
+//        binding.spinnerAlat.adapter = spinnerAdapter
 
         val nextBtn : Button = binding.kirim
         nextBtn.setOnClickListener{
@@ -58,13 +56,13 @@ class FormFragment : Fragment() {
     }
 
     fun uploadData() {
-        val uploadNama: String = binding.textNameField.toString()
-        val uploadNim: String = binding.textNIMField.toString()
-        val uploadAlat: String = spinner.selectedItem.toString()
+        val uploadNama: String = binding.textNameField.text.toString()
+        val uploadNim: String = binding.textNIMField.text.toString()
+        val uploadAlat: String = "Arduino"//binding.spinnerAlat.selectedItem.toString()
         val uploadJumlah: Long = 1
-        val uploadTanggalPinjam: String = binding.textTglPeminjamanField.toString()
-        val uploadTanggalKembali: String = binding.textTglPengembalianField.toString()
-        val uploadAlasan: String = binding.textAlasanField.toString()
+        val uploadTanggalPinjam: String = binding.textTglPeminjamanField.text.toString()
+        val uploadTanggalKembali: String = binding.textTglPengembalianField.text.toString()
+        val uploadAlasan: String = binding.textAlasanField.text.toString()
         val uploadStatusPinjam: String = "process"
 
         val database = FirebaseDatabase.getInstance("https://pinjam-barang-lab-komputer-default-rtdb.asia-southeast1.firebasedatabase.app")
@@ -80,18 +78,31 @@ class FormFragment : Fragment() {
             uploadStatusPinjam
         )
         var totalPinjaman: Long = 0
-        database.addValueEventListener(object: ValueEventListener {
+//        database.addValueEventListener(object: ValueEventListener {
+//            override fun onDataChange(snapshot: DataSnapshot) {
+//                totalPinjaman = snapshot.childrenCount + 1
+//            }
+//            override fun onCancelled(error: DatabaseError) {
+//                TODO("Not yet implemented")
+//            }
+//        })
+        val valueEventListener = object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 totalPinjaman = snapshot.childrenCount + 1
+                // Use the updated value here
+                println(totalPinjaman)
             }
+
             override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
+                // Handle the error, if necessary
             }
-        })
+        }
+        database.addValueEventListener(valueEventListener)
+
         database.child(totalPinjaman.toString()).setValue(dataUpload).addOnSuccessListener {
             binding.textNameField.text!!.clear()
             binding.textNIMField.text!!.clear()
-//            spinner.adapter(null)
+//            binding.spinnerAlat.adapter(null)
             binding.textTglPeminjamanField.text!!.clear()
             binding.textTglPengembalianField.text!!.clear()
             binding.textAlasanField.text!!.clear()
