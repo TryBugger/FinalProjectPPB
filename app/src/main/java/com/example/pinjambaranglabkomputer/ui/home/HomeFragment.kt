@@ -41,13 +41,13 @@ class HomeFragment : Fragment() {
         val root: View = binding.root
 
         barangListRecyclerView = binding.barangRecycleView
-        barangListRecyclerView.layoutManager = LinearLayoutManager(this)
+        barangListRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         barangListRecyclerView.setHasFixedSize(true)
 
         barangListArrayList = arrayListOf<ListBarang>()
         barangListRecyclerView.adapter = BarangAdapter(barangListArrayList)
-
         listBarang()
+
 /*        val textView: TextView = binding.textHome
         homeViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
