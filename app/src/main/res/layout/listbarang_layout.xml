@@ -32,7 +32,7 @@
                 android:textStyle="bold"
                 android:textSize="20sp"
                 android:layout_marginStart="10dp"
-                android:id="@+id/nameBarang"/>
+                android:id="@+id/nameBarangId"/>
         </LinearLayout>
 
         <LinearLayout
@@ -53,7 +53,7 @@
                 android:textStyle="bold"
                 android:textSize="20sp"
                 android:layout_marginStart="10dp"
-                android:id="@+id/jumlahBarang"/>
+                android:id="@+id/jumlahBarangId"/>
 
         </LinearLayout>
 

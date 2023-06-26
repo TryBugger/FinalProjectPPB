@@ -28,8 +28,8 @@ class BarangAdapter(private val barangList: ArrayList<ListBarang>): RecyclerView
     }
 
     class BarangViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-        var nama: TextView  = itemView.findViewById(R.id.nameBarang)
-        var jumlah: TextView  = itemView.findViewById(R.id.jumlahBarang)
+        var nama: TextView  = itemView.findViewById(R.id.nameBarangId)
+        var jumlah: TextView  = itemView.findViewById(R.id.jumlahBarangId)
     }
 
 }
