@@ -1,14 +1,10 @@
 package com.example.pinjambaranglabkomputer.ui.form
 
-import android.R
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
 import android.widget.Button
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.nav_drawer.ui.form.FormViewModel
@@ -55,7 +51,7 @@ class FormFragment : Fragment() {
         return root
     }
 
-    fun uploadData() {
+    private fun uploadData() {
         val database = FirebaseDatabase.getInstance("https://pinjam-barang-lab-komputer-default-rtdb.asia-southeast1.firebasedatabase.app")
             .getReference("ListPeminjaman")
         val dataUpload = Peminjaman(
@@ -68,43 +64,27 @@ class FormFragment : Fragment() {
             binding.textAlasanField.text.toString(),
             "process"
         )
-        var totalPinjaman: Long = 0
-//        database.addValueEventListener(object: ValueEventListener {
-//            override fun onDataChange(snapshot: DataSnapshot) {
-//                totalPinjaman = snapshot.childrenCount + 1
-//            }
-//            override fun onCancelled(error: DatabaseError) {
-//                TODO("Not yet implemented")
-//            }
-//        })
-        val valueEventListener = object : ValueEventListener {
+        database.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                totalPinjaman = snapshot.childrenCount
-                // Use the updated value here
-                println("Didalam Fungsi" + totalPinjaman.toString())
+                val totalPinjaman = snapshot.childrenCount + 1
+                database.child(totalPinjaman.toString()).setValue(dataUpload).addOnSuccessListener {
+                    // Clear input fields
+                    binding.textNameField.text!!.clear()
+                    binding.textNIMField.text!!.clear()
+                    //binding.spinnerAlat.adapter(null)
+                    binding.textTglPeminjamanField.text!!.clear()
+                    binding.textTglPengembalianField.text!!.clear()
+                    binding.textAlasanField.text!!.clear()
+                }.addOnFailureListener {
+                    // Handle the failure, if necessary
+                }
             }
 
             override fun onCancelled(error: DatabaseError) {
                 // Handle the error, if necessary
             }
-        }
-        database.addValueEventListener(valueEventListener)
-        println("Diluar Fungsi" + totalPinjaman.toString())
-
-            database.child(totalPinjaman.toString()).setValue(dataUpload).addOnSuccessListener {
-                binding.textNameField.text!!.clear()
-                binding.textNIMField.text!!.clear()
-    //            binding.spinnerAlat.adapter(null)
-                binding.textTglPeminjamanField.text!!.clear()
-                binding.textTglPengembalianField.text!!.clear()
-                binding.textAlasanField.text!!.clear()
-
-    //            Toast.makeText(this@FormFragment, "Upload Data Peminjaman Sukses", Toast.LENGTH_SHORT).show()
-            }.addOnFailureListener {
-//            Toast.makeText(this@FormFragment, "Gagal Upload Data Peminjaman", Toast.LENGTH_SHORT).show()
-        }
+        })
     }
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
